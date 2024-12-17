@@ -5,6 +5,8 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+
 
 api = Blueprint('api', __name__)
 
@@ -20,3 +22,19 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+# create_access_token() function is used to actually generate the JWT.
+@api.route("/login", methods=["POST"])
+def login():
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+
+    user =User. query.filter_by(email=email, password=password).first()
+    if user is None:
+        return jsonify({"msg": "Bad email or password"}), 401
+
+    # if username != "test" or password != "test":
+    #     return jsonify({"msg": "Bad username or password"}), 401
+
+    access_token = create_access_token(identity=email)
+    return jsonify(access_token=access_token)
