@@ -1,4 +1,5 @@
-  
+# ESTE ARCHIVO ES PARA VISUALIZAR EL BACKEND  
+
 import os
 from flask_admin import Admin
 from .models import db, User
