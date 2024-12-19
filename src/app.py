@@ -35,7 +35,7 @@ MIGRATE = Migrate(app, db, compare_type=True)
 db.init_app(app)
 
 # Setup the Flask-JWT-Extended extension
-app.config["JWT_SECRET_KEY"] = "clave-para-produccion-en-tokens"  # Change this!
+app.config["JWT_SECRET_KEY"] = "clave-para-produccion-en-tokens"
 jwt = JWTManager(app)
 
 # add the admin
