@@ -46,7 +46,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+
+			login: async(email, password)=>{
+				console.log(email, password);
+				try{
+					// fetching data from the backend
+					const response = await fetch(process.env.BACKEND_URL+"/api/login",{
+						method:"POST",
+						headers:{
+							"Content-Type":"application/json"
+						},
+						body: JSON.stringify({
+							email: email,
+							password: password
+						})
+					})
+					if (!response.ok){
+						throw new Error("Failed to Login")
+					}
+					const data = await response.json()
+					localStorage.setItem("accessToken", data.access_token)
+					console.log("User:", data);
+					return data;
+				}catch(error){
+					console.log("Error loading message from backend", error)
+				}
 			}
+
 		}
 	};
 };
