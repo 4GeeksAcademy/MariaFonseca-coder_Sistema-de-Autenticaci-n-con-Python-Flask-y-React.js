@@ -4,11 +4,11 @@ db = SQLAlchemy()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    nombre = db.Column(db.String(20), unique=False, nullable=False)
-    apellidos = db.Column(db.String(20), unique=False, nullable=False)
+    name = db.Column(db.String(20), unique=False, nullable=False)
+    last_name = db.Column(db.String(20), unique=False, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120), unique=False, nullable=False)
-    telefono = db.Column(db.String(20), unique=True, nullable=False)
+    phone_number = db.Column(db.String(20), unique=True, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
@@ -17,8 +17,8 @@ class User(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "nombre": self.nombre,
-            "apellidos": self.apellidos,
+            "name": self.name,
+            "last_name": self.last_name,
             "email": self.email,
-            "telefono": self.telefono,
+            "phone_number": self.phone_number,
         }

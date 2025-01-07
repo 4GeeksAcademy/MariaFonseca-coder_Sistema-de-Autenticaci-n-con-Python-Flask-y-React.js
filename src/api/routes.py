@@ -1,7 +1,7 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
-from flask import Flask, request, jsonify, url_for, Blueprint
+from flask import Flask, request, jsonify, url_for, Blueprint, current_app
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
@@ -32,20 +32,17 @@ def create_one_user():
 
     body = json.loads(request.data)
     new_user = User(
-        email = body["email"],
         name = body["name"],
+        last_name = body["last_name"],
+        email = body["email"],
+        phone_number = body["phone_number"],
         password = body["password"],
         is_active = True
     )
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
-
-    user =User. query.filter_by(email=email, password=password).first()
-    if user is None:
-        return jsonify({"msg": "Bad email or password"}), 401
-
-    access_token = create_access_token(identity=email)
-    return jsonify(access_token=access_token)
+    db.session.add(new_user)
+    db.session.commit()
+    
+    return jsonify({"msg": "User created"}), 201 #201 porque estoy agregando un nuevo valor
 
 
 
