@@ -36,7 +36,7 @@ def create_one_user():
         last_name = body["last_name"],
         email = body["email"],
         phone_number = body["phone_number"],
-        password = body["password"],
+        password = current_app.bcrypt.generate_password_hash(body["password"]).decode('utf-8'),
         is_active = True
     )
     db.session.add(new_user)
