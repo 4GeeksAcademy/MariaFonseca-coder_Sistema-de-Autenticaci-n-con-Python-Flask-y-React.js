@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
 import { Context } from "../store/appContext";
 
 export const Login = () => {
@@ -17,10 +16,21 @@ export const Login = () => {
         }))
     }
 
-    const handleLogin = (e) => {
-        e.preventDefault()
-        actions.login(data.email, data.password)
-    }
+    // const handleLogin = (e) => {
+    //     e.preventDefault()
+    //     actions.login(data.email, data.password)
+    // }
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        const success = await actions.login(data.email, data.password);
+        if (success) {
+            window.location.href = "/perfil"; //Redirige al perfil
+        } else {
+            alert("Login failed. Check your email or password.");
+        }
+    };
+
 
     return (
         <div className="container">
@@ -39,9 +49,7 @@ export const Login = () => {
                         <input type="password" className="form-control" id="inputPassword3" name="password" value={data.password} onChange={handleChange} />
                     </div>
                 </div>
-
                 <button type="submit" className="btn btn-primary">Login</button>
-
             </form>
         </div>
     );

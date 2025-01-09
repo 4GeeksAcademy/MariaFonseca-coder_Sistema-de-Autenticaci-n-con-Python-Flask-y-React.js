@@ -67,9 +67,31 @@ def login():
 
 # Protect a route with jwt_required, which will kick out requests
 # without a valid JWT present.
+# @api.route("/perfil", methods=["GET"])
+# @jwt_required()
+# def protected():
+#     # Access the identity of the current user with get_jwt_identity
+#     current_user = get_jwt_identity()
+#     return jsonify(logged_in_as=current_user), 200
+
+
+
 @api.route("/perfil", methods=["GET"])
 @jwt_required()
-def protected():
-    # Access the identity of the current user with get_jwt_identity
+def get_profile():
+    # Obtener la identidad del usuario actual
     current_user = get_jwt_identity()
-    return jsonify(logged_in_as=current_user), 200
+
+    # Buscar al usuario en la base de datos (reemplazar "email" si usas ID como identidad)
+    user = User.query.filter_by(email=current_user).first()
+
+    if not user:
+        return jsonify({"msg": "Usuario no encontrado"}), 404
+
+    # Retornar los datos del usuario
+    return jsonify({
+        "name": user.name,
+        "last_name": user.last_name,
+        "email": user.email,
+        "phone_number": user.phone_number,
+    }), 200
