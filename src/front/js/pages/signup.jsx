@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Context } from "../store/appContext"; // Asegúrate de importar el contexto
+import { Context } from "../store/appContext";
 
 export const SignUp = () => {
     const { actions } = useContext(Context); // Obtener acciones del contexto

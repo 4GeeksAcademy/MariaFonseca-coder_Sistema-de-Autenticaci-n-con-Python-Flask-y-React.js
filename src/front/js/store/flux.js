@@ -139,14 +139,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 						if (errorData.msg === "Este correo ya está registrado. Por favor, usa otro email.") {
 							return "Este correo ya está registrado. Por favor, usa otro email.";
 						}
-						alert(errorData.msg); // Otro tipo de error
+						alert(errorData.msg);
 						throw new Error(errorData.msg);
 					}
 
 					const data = await response.json();
 					console.log("User registered successfully:", data);
 
-					return "Usuario registrado correctamente";  // El mensaje de éxito
+					return "Usuario registrado correctamente";
 				} catch (error) {
 					console.error("Error registering:", error);
 					return error.message || "Error al registrar el usuario.";
