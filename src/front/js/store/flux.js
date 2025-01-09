@@ -114,7 +114,45 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("Error en la solicitud del perfil:", error);
 					return null; // Retornar null en caso de error
 				}
+			},
+
+			signUp: async (name, last_name, email, phone_number, password) => {
+				console.log(name, last_name, email, phone_number, password);
+
+				try {
+					const response = await fetch(process.env.BACKEND_URL + "/api/signup", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify({
+							name: name,
+							last_name: last_name,
+							email: email,
+							phone_number: phone_number,
+							password: password
+						})
+					});
+
+					if (!response.ok) {
+						const errorData = await response.json();
+						if (errorData.msg === "Este correo ya está registrado. Por favor, usa otro email.") {
+							return "Este correo ya está registrado. Por favor, usa otro email.";
+						}
+						alert(errorData.msg); // Otro tipo de error
+						throw new Error(errorData.msg);
+					}
+
+					const data = await response.json();
+					console.log("User registered successfully:", data);
+
+					return "Usuario registrado correctamente";  // El mensaje de éxito
+				} catch (error) {
+					console.error("Error registering:", error);
+					return error.message || "Error al registrar el usuario.";
+				}
 			}
+
 
 		}
 	};

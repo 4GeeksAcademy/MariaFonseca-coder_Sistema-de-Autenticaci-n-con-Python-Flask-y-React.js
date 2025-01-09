@@ -25,25 +25,40 @@ def handle_hello():
     return jsonify(response_body), 200
 
 
-
 # create register part
 @api.route("/signup", methods=["POST"])
 def create_one_user():
+    try:
+        body = json.loads(request.data)
 
-    body = json.loads(request.data)
-    new_user = User(
-        name = body["name"],
-        last_name = body["last_name"],
-        email = body["email"],
-        phone_number = body["phone_number"],
-        password = current_app.bcrypt.generate_password_hash(body["password"]).decode('utf-8'),
-        is_active = True
-    )
-    db.session.add(new_user)
-    db.session.commit()
-    
-    return jsonify({"msg": "User created"}), 201 #201 porque estoy agregando un nuevo valor
+        # Verificación si todos los campos están presentes
+        required_fields = ["name", "last_name", "email", "phone_number", "password"]
+        for field in required_fields:
+            if field not in body:
+                return jsonify({"msg": f"Missing field: {field}"}), 400
 
+        # Verificar si el correo ya está registrado
+        existing_user = User.query.filter_by(email=body["email"]).first()
+        if existing_user:
+            return jsonify({"msg": "Este correo ya está registrado. Por favor, usa otro email."}), 400
+
+        # Crear nuevo usuario con los datos recibidos
+        new_user = User(
+            name=body["name"],
+            last_name=body["last_name"],
+            email=body["email"],
+            phone_number=body["phone_number"],
+            password=current_app.bcrypt.generate_password_hash(body["password"]).decode('utf-8'),
+            is_active=True  # Valor fijo o lo puedes recibir si lo deseas.
+        )
+
+        db.session.add(new_user)
+        db.session.commit()
+
+        return jsonify({"msg": "User created"}), 201  # 201 porque estamos creando un nuevo recurso
+    except Exception as e:
+        print("Error en la creación del usuario:", str(e))  # Registra el error en consola
+        return jsonify({"msg": "Internal Server Error"}), 500
 
 
 # create_access_token() function is used to actually generate the JWT.
