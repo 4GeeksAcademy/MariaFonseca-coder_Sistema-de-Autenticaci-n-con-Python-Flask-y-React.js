@@ -33,7 +33,7 @@ export const SignUp = () => {
         <div className="container py-5">
             <div className="col-12 col-md-8 col-lg-6 mx-auto">
                 <h2 className="lobster-regular text-center mb-4">Sign Up</h2>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="eb-garamond">
                     <div className="input-group mb-3">
                         <span className="input-group-text">Name</span>
                         <input

@@ -37,7 +37,7 @@ export const Login = () => {
                         {errorMessage}
                     </div>
                 )}
-                <form onSubmit={handleLogin}>
+                <form onSubmit={handleLogin} className="eb-garamond">
                     <div className="input-group mb-3">
                         <span className="input-group-text">Email</span>
                         <input

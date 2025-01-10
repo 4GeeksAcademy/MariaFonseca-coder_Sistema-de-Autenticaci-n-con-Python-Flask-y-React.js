@@ -19,15 +19,17 @@ export const Perfil = () => {
     }
 
     return (
-        <div className="container">
-            <h1>Perfil</h1>
-            <div className="card">
-                <div className="card-body">
-                    <h5 className="card-title">Información del Usuario</h5>
-                    <p><strong>Nombre:</strong> {profile.name}</p>
-                    <p><strong>Apellido:</strong> {profile.last_name}</p>
-                    <p><strong>Email:</strong> {profile.email}</p>
-                    <p><strong>Teléfono:</strong> {profile.phone_number}</p>
+        <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
+            <div className="p-4 border rounded shadow-lg" style={{ width: "100%", maxWidth: "500px" }}>
+                <h2 className="text-center mb-4 lobster-regular">Perfil</h2>
+                <div className="card">
+                    <div className="card-body eb-garamond">
+                        <h5 className="card-title text-center lobster-regular">Información del Usuario</h5>
+                        <p><strong>Nombre:</strong> {profile.name}</p>
+                        <p><strong>Apellido:</strong> {profile.last_name}</p>
+                        <p><strong>Email:</strong> {profile.email}</p>
+                        <p><strong>Teléfono:</strong> {profile.phone_number}</p>
+                    </div>
                 </div>
             </div>
         </div>
