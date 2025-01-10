@@ -66,7 +66,7 @@ export const Login = () => {
 
                     <div className="d-flex justify-content-between">
                         <button type="submit" className="btn btn-secondary">Login</button>
-                        <Link to="/" className="btn btn-outline-secondary">Back</Link>
+                        <Link to="/" className="btn btn-outline-secondary">Go Back</Link>
                     </div>
                 </form>
             </div>

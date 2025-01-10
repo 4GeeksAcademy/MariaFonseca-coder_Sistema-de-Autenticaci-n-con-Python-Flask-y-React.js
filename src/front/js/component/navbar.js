@@ -14,7 +14,7 @@ export const Navbar = () => {
 		<nav className="navbar navbar-light bg-warning">
 			<div className="container">
 				<Link to="/" className="text-decoration-none">
-					<span className="navbar-brand mb-0 lobster-regular fs-4">Inicio</span>
+					<span className="navbar-brand mb-0 lobster-regular fs-4">Home</span>
 				</Link>
 
 				<div className="d-flex justify-content-end align-items-center eb-garamond">
