@@ -1,9 +1,18 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
-
 	const location = useLocation();
+	const navigate = useNavigate(); // Necesitamos esto para redirigir después de hacer logout
+
+	const handleLogout = () => {
+		// Eliminar el token de sessionStorage
+		sessionStorage.removeItem("token");
+
+		// Redirigir al usuario al inicio
+		navigate("/");
+	};
+
 	return (
 		<nav className="navbar navbar-light bg-warning">
 			<div className="container">
@@ -23,9 +32,9 @@ export const Navbar = () => {
 						</Link>
 					)}
 					{location.pathname === "/perfil" && (
-						<Link to="/">
-							<button className="btn btn-secondary">Logout</button>
-						</Link>
+						<button className="btn btn-secondary" onClick={handleLogout}>
+							Logout
+						</button>
 					)}
 				</div>
 			</div>
