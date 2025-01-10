@@ -34,13 +34,12 @@ export const SignUp = () => {
             <div className="col-12 col-md-8 col-lg-6 mx-auto">
                 <h2 className="lobster-regular text-center mb-4">Sign Up</h2>
                 <form onSubmit={handleSubmit}>
-                    {/* Nombre y Apellido */}
                     <div className="input-group mb-3">
                         <span className="input-group-text">Name</span>
                         <input
                             type="text"
                             className="form-control"
-                            placeholder="First Name"
+                            placeholder="e.g. Maicol"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             required
@@ -52,61 +51,61 @@ export const SignUp = () => {
                         <input
                             type="text"
                             className="form-control"
-                            placeholder="Last Name"
+                            placeholder="e.g. Fernández"
                             value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
                             required
                         />
                     </div>
 
-                    {/* Correo electrónico */}
+
                     <div className="input-group mb-3">
                         <span className="input-group-text">Email</span>
                         <input
                             type="email"
                             className="form-control"
-                            placeholder="Email"
+                            placeholder="e.g. maicol@gmail.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
                         />
                     </div>
 
-                    {/* Teléfono */}
+
                     <div className="input-group mb-3">
                         <span className="input-group-text">Phone</span>
                         <input
                             type="text"
                             className="form-control"
-                            placeholder="Phone Number"
+                            placeholder="e.g. 67894580"
                             value={phoneNumber}
                             onChange={(e) => setPhoneNumber(e.target.value)}
                             required
                         />
                     </div>
 
-                    {/* Contraseña */}
+
                     <div className="input-group mb-3">
                         <span className="input-group-text">Password</span>
                         <input
                             type="password"
                             className="form-control"
-                            placeholder="Password"
+                            placeholder="e.g. 3456kj20"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
                     </div>
 
-                    {/* Botones */}
+
                     <div className="d-flex justify-content-between">
                         <button type="submit" className="btn btn-secondary">Sign Up</button>
-                        <Link to="/" className="btn btn-outline-secondary">Atrás</Link>
+                        <Link to="/" className="btn btn-outline-secondary">Go Back</Link>
                     </div>
                 </form>
             </div>
 
-            {/* Toast */}
+
             {toastMessage && (
                 <div className="toast-container position-fixed top-0 end-0 p-3" style={{ zIndex: 1050 }}>
                     <div
