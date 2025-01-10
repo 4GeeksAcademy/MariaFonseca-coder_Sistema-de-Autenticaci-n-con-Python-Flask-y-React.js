@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export const SignUp = () => {
     const { actions } = useContext(Context); // Obtener acciones del contexto
@@ -29,47 +30,83 @@ export const SignUp = () => {
     };
 
     return (
-        <div>
-            <h2>Sign Up</h2>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Last Name"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    required
-                />
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Phone Number"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <button type="submit">Sign Up</button>
-            </form>
+        <div className="container py-5">
+            <div className="col-12 col-md-8 col-lg-6 mx-auto">
+                <h2 className="lobster-regular text-center mb-4">Sign Up</h2>
+                <form onSubmit={handleSubmit}>
+                    {/* Nombre y Apellido */}
+                    <div className="input-group mb-3">
+                        <span className="input-group-text">Name</span>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="First Name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                        />
+                    </div>
 
+                    <div className="input-group mb-3">
+                        <span className="input-group-text">Last Name</span>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Last Name"
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    {/* Correo electrónico */}
+                    <div className="input-group mb-3">
+                        <span className="input-group-text">Email</span>
+                        <input
+                            type="email"
+                            className="form-control"
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    {/* Teléfono */}
+                    <div className="input-group mb-3">
+                        <span className="input-group-text">Phone</span>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Phone Number"
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    {/* Contraseña */}
+                    <div className="input-group mb-3">
+                        <span className="input-group-text">Password</span>
+                        <input
+                            type="password"
+                            className="form-control"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    {/* Botones */}
+                    <div className="d-flex justify-content-between">
+                        <button type="submit" className="btn btn-secondary">Sign Up</button>
+                        <Link to="/" className="btn btn-outline-secondary">Atrás</Link>
+                    </div>
+                </form>
+            </div>
+
+            {/* Toast */}
             {toastMessage && (
                 <div className="toast-container position-fixed top-0 end-0 p-3" style={{ zIndex: 1050 }}>
                     <div

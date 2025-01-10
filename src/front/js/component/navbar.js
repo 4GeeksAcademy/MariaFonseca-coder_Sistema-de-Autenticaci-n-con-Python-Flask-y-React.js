@@ -5,26 +5,26 @@ export const Navbar = () => {
 
 	const location = useLocation();
 	return (
-		<nav className="navbar navbar-light bg-light">
+		<nav className="navbar navbar-light bg-warning">
 			<div className="container">
-				<Link to="/">
-					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+				<Link to="/" className="text-decoration-none">
+					<span className="navbar-brand mb-0 lobster-regular fs-4">Inicio</span>
 				</Link>
 
 				<div className="d-flex justify-content-end align-items-center">
 					{(location.pathname === "/" || location.pathname === "/login") && (
 						<Link to="/signup" className="me-2">
-							<button className="btn btn-primary">Sign Up</button>
+							<button className="btn btn-secondary">Sign Up</button>
 						</Link>
 					)}
 					{(location.pathname === "/" || location.pathname === "/signup") && (
 						<Link to="/login">
-							<button className="btn btn-primary">Login</button>
+							<button className="btn btn-secondary">Login</button>
 						</Link>
 					)}
 					{location.pathname === "/perfil" && (
 						<Link to="/">
-							<button className="btn btn-primary">Logout</button>
+							<button className="btn btn-secondary">Logout</button>
 						</Link>
 					)}
 				</div>

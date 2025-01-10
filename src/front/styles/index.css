@@ -1,3 +1,18 @@
-/* 
-    General Styles used on every website (Don't Repeat Yourself)
-*/
+.lobster-regular {
+    font-family: "Lobster", serif;
+    font-weight: 400;  /* Peso estándar para Lobster */
+    font-style: normal;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+.eb-garamond {
+    font-family: "EB Garamond", serif;
+    font-weight: 400; /* Puedes ajustar el peso según lo que desees (400 a 800) */
+    font-style: normal; /* O italics si prefieres un estilo en cursiva */
+  }
+  

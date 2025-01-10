@@ -49,7 +49,7 @@ export const Login = () => {
                         <input type="password" className="form-control" id="inputPassword3" name="password" value={data.password} onChange={handleChange} />
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary">Login</button>
+                <button type="submit" className="btn btn-secondary">Login</button>
             </form>
         </div>
     );
