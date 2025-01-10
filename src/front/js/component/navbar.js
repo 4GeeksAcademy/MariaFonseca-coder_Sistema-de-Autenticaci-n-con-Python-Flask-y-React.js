@@ -3,14 +3,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
 	const location = useLocation();
-	const navigate = useNavigate(); // Necesitamos esto para redirigir después de hacer logout
+	const navigate = useNavigate(); // Redirigir
 
 	const handleLogout = () => {
-		// Eliminar el token de sessionStorage
-		sessionStorage.removeItem("token");
-
-		// Redirigir al usuario al inicio
-		navigate("/");
+		sessionStorage.removeItem("token"); // Supuestamente elimina el token de sessionStorage
+		navigate("/"); // Redirije
 	};
 
 	return (

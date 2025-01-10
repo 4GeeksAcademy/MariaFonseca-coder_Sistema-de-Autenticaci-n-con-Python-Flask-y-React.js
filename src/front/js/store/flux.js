@@ -17,9 +17,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
 
 			getMessage: async () => {
 				try {
@@ -33,20 +30,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("Error loading message from backend", error)
 				}
 			},
-			// changeColor: (index, color) => {
-			// 	//get the store
-			// 	const store = getStore();
-
-			// 	//we have to loop the entire demo array to look for the respective index
-			// 	//and change its color
-			// 	const demo = store.demo.map((elm, i) => {
-			// 		if (i === index) elm.background = color;
-			// 		return elm;
-			// 	});
-
-			// 	//reset the global store
-			// 	setStore({ demo: demo });
-			// },
 			login: async (email, password) => {
 				console.log(email, password); //Muestra credenciales en consola, por si necesitamos revisar si llegan.
 
@@ -70,18 +53,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					// Convierte respuesta en JSON (para obtener el token).
 					const data = await response.json();
-
 					// Guarda el token en localStorage.
 					localStorage.setItem("accessToken", data.access_token);
 					console.log("User logged in successfully:", data);
-
 					// Devuelve true porque todo salió bien.
 					return true;
 
 				} catch (error) {
 					// Si ocurre algún error, muestra el error en la consola.
 					console.error("Error logging in:", error);
-
 					// Devuelve false porque el inicio de sesión falló.
 					return false;
 				}
@@ -152,8 +132,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return error.message || "Error al registrar el usuario.";
 				}
 			}
-
-
 		}
 	};
 };

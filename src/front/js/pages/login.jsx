@@ -8,7 +8,7 @@ export const Login = () => {
         email: "",
         password: ""
     });
-    const [errorMessage, setErrorMessage] = useState("");  // Estado para el mensaje de error
+    const [errorMessage, setErrorMessage] = useState("");  // Estado para mensaje de error
 
     const handleChange = (e) => {
         const { name, value } = e.target;

@@ -15,7 +15,15 @@ export const Perfil = () => {
     }, [actions]);
 
     if (!profile) {
-        return <p>Cargando perfil...</p>;
+        return (
+            <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
+                <div className="text-center">
+                    <div className="spinner-border text-warning" role="status" style={{ width: "3rem", height: "3rem" }}>
+                    </div>
+                    <p className="mt-3">Cargando perfil...</p>
+                </div>
+            </div>
+        );
     }
 
     return (
