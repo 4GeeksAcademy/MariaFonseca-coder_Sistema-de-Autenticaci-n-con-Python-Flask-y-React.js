@@ -6,7 +6,7 @@ export const Navbar = () => {
 	const navigate = useNavigate(); // Redirigir
 
 	const handleLogout = () => {
-		sessionStorage.removeItem("token"); // Supuestamente elimina el token de sessionStorage
+		localStorage.removeItem("accessToken"); // Supuestamente elimina el token de sessionStorage
 		navigate("/"); // Redirije
 	};
 
